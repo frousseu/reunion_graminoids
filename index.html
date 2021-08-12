@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+  <html>
+  <head>
+  <style>
+  body .main-container {
+    max-width: 1950px !important;
+    width: 1950px !important;
+  }
+body {
+  max-width: 1950px !important;
+}
+* {
+  box-sizing: border-box;
+}
+p {
+  padding: 0px;
+  margin: 4px;
+}
+.flore {
+  color: #cccccc;
+    font-style: italic;
+}
+.column {
+  float: left;
+  width: 33%;
+  padding: 8px;
+  background: red;
+}
+.species {
+  width: 100%;
+  padding: 0px;
+  background: forestgreen;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+  background: blue;
+}
+.img2 {
+  height:200px;
+  width:200px;
+  object-fit:cover;
+  padding: 2px;
+}
+.img2:hover {
+  opacity: 0.70;
+  filter: alpha(opacity=100);
+}
+.p2 {
+  color:white;
+  font-size:30px;
+  font-family:helvetica;
+}
+#img2 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* The Modal (background) */
+.modal {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+padding-top: 20px; /* Location of the box */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+margin: auto;
+display: block;
+width: 80%;
+max-width: 900px;
+}
+
+/* Caption of Modal Image */
+#caption {
+margin: auto;
+display: block;
+width: 80%;
+max-width: 900px;
+text-align: center;
+color: #ccc;
+padding: 10px 0;
+height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+-webkit-animation-name: zoom;
+-webkit-animation-duration: 0.3s;
+animation-name: zoom;
+animation-duration: 0.3s;
+}
+
+@-webkit-keyframes zoom {
+from {-webkit-transform:scale(0)} 
+to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+from {transform:scale(0)} 
+to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+position: absolute;
+top: 15px;
+right: 35px;
+color: #f1f1f1;
+font-size: 40px;
+font-weight: bold;
+transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+color: #bbb;
+text-decoration: none;
+cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+.modal-content {
+width: 100%;
+}
+}
+</style>
+  </head>
+  <body>
+  <div class="species">
+  <h2 style = "color:white;font-size:40px;font-family:helvetica;">Index photographique des graminées de la Réunion</h2>
+  </div>
+  <p style = "color:black;font-size:22px;font-family:helvetica;">Cette page est un index photographique des graminées de la Réunion. La liste des espèces présentes est basée sur les espèces décrites dans la Flore des Mascareignes et les espèces listéees dans l'index de la flore de la Réunion du CBNM. Les photos proviennent presque toutes d'observations sur iNaturalist. Les photos présentées sont toutes sous une license CC permettant leur utilisation à des fins non-commerciales. Passez votre curseur sur une photo pour voir la license utilisée et l'auteur de a photo et cliquez sur la photo pour voir la photo originale. Pour toutes questions ou commentaires: ici</p>
+<div class="species">
+<p style = "color:white;font-size:30px;font-family:helvetica;">
+Nom dans iNaturalist <span class="flore">Nom dans la Flore des Mascareignes</span><span style="float:right;">Famille</span>
+</p>
+</div>
+<div class="species">
+    <p class="p2">
+      Anthoxanthum odoratum <span class="flore">Anthoxanthum odoratum</span> <span style="float:right;">Poacées</span>
+    </p>
+  </div>  
+  <img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/146769358/large.jpeg?1627457314" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/146769371/large.jpeg?1627457325" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/129752712/large.jpeg?1621304050" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/138935283/large.jpeg?1624699065" title="(c) Rowan McCulloch, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/127330895/large.jpeg?1620440331" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/127330952/large.jpeg?1620440351" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/129752417/large.jpeg?1621303961" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><div class="species">
+    <p class="p2">
+      Dichanthium aristatum <span class="flore">Dichanthium aristatum</span> <span style="float:right;">Poacées</span>
+    </p>
+  </div>  
+  <img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/145324101/large.jpeg?1626946500" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/145324127/large.jpeg?1626946513" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/145324292/large.jpeg?1626946645" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/145324164/large.jpeg?1626946539" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/145324199/large.jpeg?1626946563" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/145324246/large.jpeg?1626946610" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/145324232/large.jpeg?1626946597" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><div class="species">
+    <p class="p2">
+      Enneapogon cenchroides <span class="flore">Enneapogon cenchroides</span> <span style="float:right;">Poacées</span>
+    </p>
+  </div>  
+  <img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/141131322/large.jpeg?1625478693" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/141131494/large.jpeg?1625478803" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/141133282/large.jpeg?1625479951" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/141131712/large.jpeg?1625478946" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/141131599/large.jpeg?1625478877" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/141132903/large.jpeg?1625479697" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/141132578/large.jpeg?1625479514" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><div class="species">
+    <p class="p2">
+      Holcus lanatus <span class="flore">Holcus lanatus</span> <span style="float:right;">Poacées</span>
+    </p>
+  </div>  
+  <img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/146769514/large.jpeg?1627457421" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/146769522/large.jpeg?1627457432" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/146769547/large.jpeg?1627457457" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/146769643/large.jpeg?1627457512" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/146769666/large.jpeg?1627457524" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/146769687/large.jpeg?1627457550" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/146769707/large.jpeg?1627457573" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><div class="species">
+    <p class="p2">
+      Paspalidium geminatum <span class="flore">Paspalidium geminatum</span> <span style="float:right;">Poacées</span>
+    </p>
+  </div>  
+  <img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/143109266/large.jpeg?1626165197" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/139197832/large.jpeg?1624790072" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/139197847/large.jpeg?1624790080" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/143109290/large.jpeg?1626165207" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/139197889/large.jpeg?1624790102" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/139197927/large.jpeg?1624790122" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/139197941/large.jpeg?1624790130" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><div class="species">
+    <p class="p2">
+      Paspalum paniculatum <span class="flore">Paspalum paniculatum</span> <span style="float:right;">Poacées</span>
+    </p>
+  </div>  
+  <img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/147850830/large.jpeg?1627845115" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/136237148/large.jpeg?1623664108" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/139269336/large.jpeg?1624810746" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/147850944/large.jpeg?1627845138" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/136237395/large.jpeg?1623664254" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/136237451/large.jpeg?1623664295" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/139269282/large.jpeg?1624810730" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><div class="species">
+    <p class="p2">
+      Paspalum scrobiculatum <span class="flore">Paspalum scrobiculatum</span> <span style="float:right;">Poacées</span>
+    </p>
+  </div>  
+  <img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/20936012/large.jpg?1530970811" title="(c) Cheng-Tao Lin, some rights reserved (CC BY)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/139268817/large.jpeg?1624810640" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/139269085/large.jpeg?1624810690" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/139269195/large.jpeg?1624810713" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/136240178/large.jpeg?1623665862" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/136240247/large.jpeg?1623665903" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/136240280/large.jpeg?1623665925" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><div class="species">
+    <p class="p2">
+      Sacciolepis indica <span class="flore">Sacciolepis indica</span> <span style="float:right;">Poacées</span>
+    </p>
+  </div>  
+  <img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/148006124/large.jpeg?1627895095" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/136108403/large.jpg?1623617613" title="(c) Kevin Faccenda, some rights reserved (CC BY)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/148006151/large.jpeg?1627895106" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/148006206/large.jpeg?1627895137" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/148006226/large.jpeg?1627895159" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/148006217/large.jpeg?1627895149" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/148006194/large.jpeg?1627895127" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><div class="species">
+    <p class="p2">
+      Urochloa mutica <span class="flore">Brachiaria mutica</span> <span style="float:right;">Poacées</span>
+    </p>
+  </div>  
+  <img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/139198197/large.jpeg?1624790271" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/143107791/large.jpeg?1626164317" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/139198266/large.jpeg?1624790316" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/143107813/large.jpeg?1626164330" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/139198328/large.jpeg?1624790354" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/139198481/large.jpeg?1624790432" title="(c) François Rousseu, some rights reserved (CC BY-NC)"><img class="img2" src="https://inaturalist-open-data.s3.amazonaws.com/photos/139198358/large.jpeg?1624790371" title="(c) François Rousseu, some rights reserved (CC BY-NC)">
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>     
+
+<script>
+
+    // create references to the modal...
+    var modal = document.getElementById('myModal');
+    // to all images -- note I'm using a class!
+    var images = document.getElementsByClassName('img2');
+    // the image in the modal
+    var modalImg = document.getElementById("img01");
+    // and the caption in the modal
+    var captionText = document.getElementById("caption");
+    
+    modal.addEventListener('click',function(){
+    this.style.display="none";
+    })
+    
+    // Go through all of the images with our custom class
+    for (var i = 0; i < images.length; i++) {
+    var img = images[i];
+    // and attach our click listener for this image.
+    img.onclick = function(evt) {
+    console.log(evt);
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.title;
+    }
+    }
+    
+    var span = document.getElementsByClassName("close")[0];
+    
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+    
+    </script>    
+
+ </body>
+ </html>
