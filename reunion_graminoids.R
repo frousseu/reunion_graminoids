@@ -3,20 +3,32 @@
 library(jsonlite)
 library(readxl)
 
-x<-fromJSON("https://api.inaturalist.org/v1/observations/90513306")
-x$results$observation_photos[[1]]$photo$attribution
+#x<-fromJSON("https://api.inaturalist.org/v1/observations/90513306")
+#x$results$observation_photos[[1]]$photo$attribution
 
-d<-as.data.frame(read_excel("C:/Users/God/Downloads/grasses.xlsx"))
+d<-as.data.frame(read_excel("C:/Users/God/Documents/reunion_graminoids/grasses.xlsx"))
 d<-d[order(d$sp,d$rank),]
+d$photo<-gsub("/medium.|/small.","/large.",d$photo)
+write.table(d[,1:8],"C:/Users/God/Documents/reunion_graminoids/grasses.csv",row.names=FALSE,sep=";",na="")
 
-d$idphoto<-lapply(strsplit(sapply(strsplit(d$photo,"/large."),"[",1),"/"),tail,1)
-d$idobs<-sapply(strsplit(d$obs,"/"),tail,1)
+d$idphoto<-lapply(strsplit(sapply(strsplit(d$photo,"/large."),function(i){if(length(i)==1){NA}else{i[1]}}),"/"),tail,1)
+d$idobs<-ifelse(!is.na(d$idphoto),sapply(strsplit(d$obs,"/"),tail,1),NA)
   
 d$attribution<-sapply(1:nrow(d),function(i){
-  x<-fromJSON(paste0("https://api.inaturalist.org/v1/observations/",d$idobs[i]))
-  m<-match(d$idphoto[i],x$results$observation_photos[[1]]$photo$id)
-  x$results$observation_photos[[1]]$photo$attribution[m]
+  if(is.na(d$idobs[i])){
+    d$credit[i]
+  }else{  
+    x<-fromJSON(paste0("https://api.inaturalist.org/v1/observations/",d$idobs[i]))
+    m<-match(d$idphoto[i],x$results$observation_photos[[1]]$photo$id)
+    x$results$observation_photos[[1]]$photo$attribution[m]
+  }
 })
+
+d$flore<-ifelse(is.na(d$flore),"",d$flore)
+
+
+d<-d[order(as.integer(is.na(d$photo)),-as.integer(factor(d$family)),d$sp,d$rank),]
+
 
 
 css<-function(i){
@@ -40,7 +52,7 @@ p {
   margin: 4px;
 }
 .flore {
-  color: #cccccc;
+  color: #FFFFFF77;
     font-style: italic;
 }
 .column {
@@ -61,17 +73,19 @@ p {
   background: blue;
 }
 .img2 {
-  height:200px;
-  width:200px;
+  height:214px;
+  width:214px;
   object-fit:cover;
   padding: 2px;
+  background: #EEEEEE;
+  background-origin: content-box;
 }
 .img2:hover {
   opacity: 0.70;
   filter: alpha(opacity=100);
 }
 .p2 {
-  color:white;
+  color:#FFFFFFEE;
   font-size:30px;
   font-family:helvetica;
 }
@@ -101,7 +115,7 @@ background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 margin: auto;
 display: block;
 width: 80%;
-max-width: 900px;
+max-width: 700px;
 }
 
 /* Caption of Modal Image */
@@ -162,11 +176,11 @@ width: 100%;
   </head>
   <body>
   <div class=\"species\">
-  <h2 style = \"color:white;font-size:40px;font-family:helvetica;\">Index photographique des graminées de la Réunion</h2>
+  <h2 style = \"color:#FFFFFFEE;font-size:40px;font-family:helvetica;\">Index photographique des graminées de la Réunion</h2>
   </div>
   <p style = \"color:black;font-size:22px;font-family:helvetica;\">Cette page est un index photographique des graminées de la Réunion. La liste des espèces présentes est basée sur les espèces décrites dans la Flore des Mascareignes et les espèces listéees dans l'index de la flore de la Réunion du CBNM. Les photos proviennent presque toutes d'observations sur iNaturalist. Les photos présentées sont toutes sous une license CC permettant leur utilisation à des fins non-commerciales. Passez votre curseur sur une photo pour voir la license utilisée et l'auteur de a photo et cliquez sur la photo pour voir la photo originale. Pour toutes questions ou commentaires: ici</p>
 <div class=\"species\">
-<p style = \"color:white;font-size:30px;font-family:helvetica;\">
+<p style = \"color:#FFFFFFEE;font-size:30px;font-family:helvetica;\">
 Nom dans iNaturalist <span class=\"flore\">Nom dans la Flore des Mascareignes</span><span style=\"float:right;\">Famille</span>
 </p>
 </div>
@@ -178,7 +192,7 @@ species_header<-function(x,i){
   cat(paste0(
   "<div class=\"species\">
     <p class=\"p2\">
-      ",x$sp[i]," <span class=\"flore\">",x$flore[i],"</span>"," <span style=\"float:right;\">","Poacées","</span>
+      ",x$sp[i]," <span class=\"flore\">",x$flore[i],"</span>"," <span style=\"float:right;\">",x$family[i],"</span>
     </p>
   </div>  
   "))
@@ -186,11 +200,11 @@ species_header<-function(x,i){
 
 species_photo<-function(x,i){
   cat(paste0(
-    "<img class=\"img2\" src=\"",x$photo[i],"\" title=\"",x$attribution[i],"\">"
+    "<img class=\"img2\" src=\"",x$photo[i],"\" src2=\"",gsub("large.","small.",x$photo[i]),"\" title=\"",x$attribution[i],"\">"
   ))
 }
 
-l<-split(d,d$sp)
+l<-split(d,factor(d$sp,levels=unique(d$sp)))
 
 
 con <- file("C:/Users/God/Downloads/index.html", open = "wt", encoding = "UTF-8")
@@ -199,9 +213,11 @@ css()
 invisible(
   lapply(l,function(i){
     species_header(i,1)
-    invisible(
-      sapply(1:nrow(i),function(j){species_photo(i,j)})
-    )
+    if(!is.na(i$photo[1])){
+      invisible(
+        sapply(1:nrow(i),function(j){species_photo(i,j)})
+      )
+    }
   })
 )
 cat("
