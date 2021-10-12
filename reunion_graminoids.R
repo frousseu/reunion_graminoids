@@ -36,6 +36,7 @@ cat("
 <!DOCTYPE html>
   <html>
   <head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>
   <style>
   body .main-container {
     max-width: 1950px !important;
@@ -50,6 +51,7 @@ body {
 p {
   padding: 0px;
   margin: 4px;
+  font-family: 'Roboto Mono';
 }
 .flore {
   color: #FFFFFF77;
@@ -87,7 +89,7 @@ p {
 .p2 {
   color:#FFFFFFEE;
   font-size:30px;
-  font-family:helvetica;
+  font-family:'Helvetica' 
 }
 #img2 {
   border-radius: 5px;
@@ -176,11 +178,11 @@ width: 100%;
   </head>
   <body>
   <div class=\"species\">
-  <h2 style = \"color:#FFFFFFEE;font-size:40px;font-family:helvetica;\">Index photographique des graminées de la Réunion</h2>
+  <h2 style = \"color:#FFFFFFEE;font-size:40px;font-family:'Helvetica';\">Index photographique des graminées de la Réunion</h2>
   </div>
-  <p style = \"color:black;font-size:22px;font-family:helvetica;\">Cette page est un index photographique des graminées de la Réunion. La liste des espèces présentes est basée sur les espèces décrites dans la Flore des Mascareignes et les espèces listéees dans l'index de la flore de la Réunion du CBNM. Les photos proviennent presque toutes d'observations sur iNaturalist. Les photos présentées sont toutes sous une license CC permettant leur utilisation à des fins non-commerciales. Passez votre curseur sur une photo pour voir la license utilisée et l'auteur de a photo et cliquez sur la photo pour voir la photo originale. Pour toutes questions ou commentaires: ici</p>
+  <p style = \"color:black;font-size:22px;\">Cette page est un index photographique des graminées de la Réunion. La liste des espèces présentes est basée sur les espèces décrites dans la Flore des Mascareignes et les espèces listéees dans l'index de la flore de la Réunion du CBNM. Les photos proviennent presque toutes d'observations sur iNaturalist. Les photos présentées sont toutes sous une license CC permettant leur utilisation à des fins non-commerciales. Passez votre curseur sur une photo pour voir la license utilisée et l'auteur de a photo et cliquez sur la photo pour voir la photo originale. Pour toutes questions ou commentaires: ici</p>
 <div class=\"species\">
-<p style = \"color:#FFFFFFEE;font-size:30px;font-family:helvetica;\">
+<p style = \"color:#FFFFFFEE;font-size:30px;\">
 Nom dans iNaturalist <span class=\"flore\">Nom dans la Flore des Mascareignes</span><span style=\"float:right;\">Famille</span>
 </p>
 </div>
