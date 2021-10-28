@@ -7,27 +7,42 @@ library(readxl)
 #x$results$observation_photos[[1]]$photo$attribution
 
 d<-as.data.frame(read_excel("C:/Users/God/Documents/reunion_graminoids/grasses.xlsx"))
+dcsv<-read.csv("C:/Users/God/Documents/reunion_graminoids/grasses.csv",sep=";")
+d<-merge(d,dcsv[,c("sp","rank","attribution")],all.x=TRUE) # only get attributions
 d<-d[order(d$sp,d$rank),]
+
 d$photo<-gsub("/medium.|/small.","/large.",d$photo)
-write.table(d[,1:8],"C:/Users/God/Documents/reunion_graminoids/grasses.csv",row.names=FALSE,sep=";",na="")
+#write.table(d[,1:9],"C:/Users/God/Documents/reunion_graminoids/grasses.csv",row.names=FALSE,sep=";",na="")
 
 d$idphoto<-lapply(strsplit(sapply(strsplit(d$photo,"/large."),function(i){if(length(i)==1){NA}else{i[1]}}),"/"),tail,1)
 d$idobs<-ifelse(!is.na(d$idphoto),sapply(strsplit(d$obs,"/"),tail,1),NA)
   
-d$attribution<-sapply(1:nrow(d),function(i){
+### only get attributions for empty ones
+#w<-1:nrow(d) # get them all to verify if any attributions have changed
+w<-which(!is.na(d$idphoto) & is.na(d$attribution))
+for(i in w){ # looping is better cause sometimes it times-out
   if(is.na(d$idobs[i])){
-    d$credit[i]
+    a<-d$credit[i]
   }else{  
     x<-fromJSON(paste0("https://api.inaturalist.org/v1/observations/",d$idobs[i]))
     m<-match(d$idphoto[i],x$results$observation_photos[[1]]$photo$id)
-    x$results$observation_photos[[1]]$photo$attribution[m]
+    a<-x$results$observation_photos[[1]]$photo$attribution[m]
   }
-})
+  d$attribution[i]<-a
+  Sys.sleep(1)
+  cat("\r",paste(match(i,w),length(w),sep=" / "))
+}
+
+#d<-d[,!sapply(d,class)=="list"]
+
+write.table(d,"C:/Users/God/Documents/reunion_graminoids/grasses.csv",row.names=FALSE,sep=";",na="")
+
 
 d$flore<-ifelse(is.na(d$flore),"",d$flore)
 
 
-d<-d[order(as.integer(is.na(d$photo)),-as.integer(factor(d$family)),d$sp,d$rank),]
+#d<-d[order(as.integer(is.na(d$photo)),-as.integer(factor(d$family)),d$sp,d$rank),]
+d<-d[order(-as.integer(factor(d$family)),d$sp,d$rank),]
 
 
 
