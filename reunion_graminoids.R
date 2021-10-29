@@ -7,14 +7,19 @@ library(readxl)
 #x$results$observation_photos[[1]]$photo$attribution
 
 d<-as.data.frame(read_excel("C:/Users/God/Documents/reunion_graminoids/grasses.xlsx"))
+#dcsv<-read.csv("https://raw.githubusercontent.com/frousseu/reunion_graminoids/main/grasses.csv",sep=";")
 dcsv<-read.csv("C:/Users/God/Documents/reunion_graminoids/grasses.csv",sep=";")
-d<-merge(d,dcsv[,c("sp","rank","attribution")],all.x=TRUE) # only get attributions
-d<-d[order(d$sp,d$rank),]
 
 d$photo<-gsub("/medium.|/small.","/large.",d$photo)
+
+d<-merge(d,dcsv[,c("sp","photo","attribution")],all.x=TRUE) # only get attributions
+d<-d[order(d$sp,d$rank),]
+
+d<-unique(d)
+
 #write.table(d[,1:9],"C:/Users/God/Documents/reunion_graminoids/grasses.csv",row.names=FALSE,sep=";",na="")
 
-d$idphoto<-lapply(strsplit(sapply(strsplit(d$photo,"/large."),function(i){if(length(i)==1){NA}else{i[1]}}),"/"),tail,1)
+d$idphoto<-sapply(strsplit(sapply(strsplit(d$photo,"/large."),function(i){if(length(i)==1){NA}else{i[1]}}),"/"),tail,1)
 d$idobs<-ifelse(!is.na(d$idphoto),sapply(strsplit(d$obs,"/"),tail,1),NA)
   
 ### only get attributions for empty ones
@@ -29,7 +34,7 @@ for(i in w){ # looping is better cause sometimes it times-out
     a<-x$results$observation_photos[[1]]$photo$attribution[m]
   }
   d$attribution[i]<-a
-  Sys.sleep(1)
+  Sys.sleep(0.1) # not to make too many requests, but not sure it is relevant
   cat("\r",paste(match(i,w),length(w),sep=" / "))
 }
 
