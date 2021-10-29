@@ -6,9 +6,9 @@ library(readxl)
 #x<-fromJSON("https://api.inaturalist.org/v1/observations/90513306")
 #x$results$observation_photos[[1]]$photo$attribution
 
-d<-as.data.frame(read_excel("C:/Users/God/Documents/reunion_graminoids/grasses.xlsx"))
+d<-as.data.frame(read_excel("C:/Users/God/Documents/reunion_graminoids/grasses.xlsx"),)
 #dcsv<-read.csv("https://raw.githubusercontent.com/frousseu/reunion_graminoids/main/grasses.csv",sep=";")
-dcsv<-read.csv("C:/Users/God/Documents/reunion_graminoids/grasses.csv",sep=";")
+dcsv<-read.csv("C:/Users/God/Documents/reunion_graminoids/grasses.csv",sep=";",na.strings=c("NA",""))
 
 d$photo<-gsub("/medium.|/small.","/large.",d$photo)
 
