@@ -198,12 +198,11 @@ width: 100%;
   </head>
   <body>
   <div class=\"species\">
-  <h2 style = \"color:#FFFFFFEE;font-size:40px;font-family:'Helvetica';\">Index photographique des graminées de la Réunion</h2>
+  <h2 style = \"color:#FFFFFFEE;font-size:40px;font-family:'Helvetica';\">Index photographique des poacées, cypéracées et juncacées de la Réunion</h2>
   </div>
   <p style = \"color:black;font-size:22px;\">Cette page est un index photographique des graminées de la Réunion. La liste des espèces présentes est basée sur les espèces décrites dans la Flore des Mascareignes et les espèces listéees dans l'index de la flore de la Réunion du CBNM. Les photos proviennent presque toutes d'observations sur iNaturalist. Les photos présentées sont toutes sous une license CC permettant leur utilisation à des fins non-commerciales. Passez votre curseur sur une photo pour voir la license utilisée et l'auteur de a photo et cliquez sur la photo pour voir la photo originale. Pour toutes questions ou commentaires: ici</p>
 <div class=\"species\">
-<p style = \"color:#FFFFFFEE;font-size:30px;\">
-Nom dans iNaturalist <span class=\"flore\">Nom dans la Flore des Mascareignes</span><span style=\"float:right;\">Famille</span>
+<p style = \"color:#FFFFFFEE;font-size:30px;\">iNaturalist <span class=\"flore\">Flore des Mascareignes</span><span style=\"float:right;\">Famille</span>
 </p>
 </div>
 ")
