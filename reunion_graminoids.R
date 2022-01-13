@@ -6,7 +6,7 @@ library(readxl)
 #x<-fromJSON("https://api.inaturalist.org/v1/observations/90513306")
 #x$results$observation_photos[[1]]$photo$attribution
 
-d<-as.data.frame(read_excel("C:/Users/God/Documents/reunion_graminoids/grasses.xlsx"),)
+d<-as.data.frame(read_excel("C:/Users/God/Documents/reunion_graminoids/grasses.xlsx"))
 #dcsv<-read.csv("https://raw.githubusercontent.com/frousseu/reunion_graminoids/main/grasses.csv",sep=";")
 dcsv<-read.csv("C:/Users/God/Documents/reunion_graminoids/grasses.csv",sep=";",na.strings=c("NA",""))
 
@@ -72,6 +72,9 @@ p {
   padding: 0px;
   margin: 4px;
   font-family: 'Roboto Mono';
+}
+a {
+  text-decoration: none; /* no underline */
 }
 .flore {
   color: #FFFFFF77;
@@ -211,12 +214,14 @@ width: 100%;
   
 species_header<-function(x,i){
   cat(paste0(
-  "<div class=\"species\">
+ "<a href=\"https://mascarine.cbnm.org/index.php/flore/index-de-la-flore/nom?code_taxref=705796\" target=\"_blank\">
+   <div class=\"species\">
     <p class=\"p2\">
       ",x$sp[i]," <span class=\"flore\">",x$flore[i],"</span>"," <span style=\"float:right;\">",x$family[i],"</span>
     </p>
-  </div>  
-  "))
+   </div>  
+  </a>
+ "))
 }
 
 species_photo<-function(x,i){
