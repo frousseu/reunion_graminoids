@@ -140,7 +140,7 @@ background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 margin: auto;
 display: block;
 width: 80%;
-max-width: 700px;
+max-width: 800px;
 }
 
 /* Caption of Modal Image */
@@ -214,7 +214,7 @@ width: 100%;
   
 species_header<-function(x,i){
   cat(paste0(
- "<a href=\"https://mascarine.cbnm.org/index.php/flore/index-de-la-flore/nom?code_taxref=705796\" target=\"_blank\">
+ "<a href=\"https://mascarine.cbnm.org/index.php/flore/index-de-la-flore/nom?",paste0("code_taxref=",x$taxref[i]),"\" target=\"_blank\">
    <div class=\"species\">
     <p class=\"p2\">
       ",x$sp[i]," <span class=\"flore\">",x$flore[i],"</span>"," <span style=\"float:right;\">",x$family[i],"</span>
@@ -226,7 +226,7 @@ species_header<-function(x,i){
 
 species_photo<-function(x,i){
   cat(paste0(
-    "<img class=\"img2\" src=\"",x$photo[i],"\" src2=\"",gsub("large.","small.",x$photo[i]),"\" title=\"",x$attribution[i],"\">"
+    "<img class=\"img2\" src=\"",x$photo[i],"\" src2=\"",gsub("large.","small.",x$photo[i]),"\" title=\"",paste(x$attribution[i],x$obs[i]),"\">"
   ))
 }
 
