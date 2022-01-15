@@ -38,7 +38,7 @@ for(i in w){ # looping is better cause sometimes it times-out
   cat("\r",paste(match(i,w),length(w),sep=" / "))
 }
 
-#d<-d[,!sapply(d,class)=="list"]
+d$attribution[which(is.na(d$attribution))]<-d$credit[which(is.na(d$attribution))]
 
 write.table(d,"C:/Users/God/Documents/reunion_graminoids/grasses.csv",row.names=FALSE,sep=";",na="")
 
@@ -75,6 +75,10 @@ p {
 }
 a {
   text-decoration: none; /* no underline */
+}
+.a2 {
+  text-decoration: none; /* no underline */
+  color: #FFFFFF77;
 }
 .flore {
   color: #FFFFFF77;
@@ -140,7 +144,7 @@ background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 margin: auto;
 display: block;
 width: 80%;
-max-width: 800px;
+max-width: 600px;
 }
 
 /* Caption of Modal Image */
@@ -152,11 +156,24 @@ max-width: 900px;
 text-align: center;
 color: #ccc;
 padding: 10px 0;
-height: 150px;
+height: 25px;
+}
+
+/* Link of Modal Image */
+#link {
+margin: auto;
+display: block;
+width: 80%;
+max-width: 900px;
+text-align: center;
+color: #ccc;
+padding: 10px 0;
+margin-bottom: 50px;
+height: 25px;
 }
 
 /* Add Animation */
-.modal-content, #caption {  
+.modal-content, #caption, #link {  
 -webkit-animation-name: zoom;
 -webkit-animation-duration: 0.3s;
 animation-name: zoom;
@@ -226,7 +243,7 @@ species_header<-function(x,i){
 
 species_photo<-function(x,i){
   cat(paste0(
-    "<img class=\"img2\" src=\"",x$photo[i],"\" src2=\"",gsub("large.","small.",x$photo[i]),"\" title=\"",paste(x$attribution[i],x$obs[i]),"\">"
+    "<img class=\"img2\" src=\"",x$photo[i],"\" src2=\"","testing","\" title=\"",paste(x$attribution[i]),"\" link=\"",paste(x$obs[i]),"\" alt=\"",paste(x$obs[i]),"\">"
   ))
 }
 
@@ -251,6 +268,7 @@ cat("
   <span class=\"close\">&times;</span>
   <img class=\"modal-content\" id=\"img01\">
   <div id=\"caption\"></div>
+  <div id=\"link\"></div>
 </div>     
 ")
 cat("
@@ -264,6 +282,8 @@ cat("
     var modalImg = document.getElementById(\"img01\");
     // and the caption in the modal
     var captionText = document.getElementById(\"caption\");
+    // and the link in the modal
+    var linkText = document.getElementById(\"link\");
     
     modal.addEventListener('click',function(){
     this.style.display=\"none\";
@@ -278,6 +298,7 @@ cat("
     modal.style.display = \"block\";
     modalImg.src = this.src;
     captionText.innerHTML = this.title;
+    linkText.innerHTML = '<a class=\"a2\" href=\"' + this.alt + '\" target=\"_blank\">' + this.alt + '</a>' ;
     }
     }
     
