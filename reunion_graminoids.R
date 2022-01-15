@@ -43,7 +43,8 @@ d$attribution[which(is.na(d$attribution))]<-d$credit[which(is.na(d$attribution))
 write.table(d,"C:/Users/God/Documents/reunion_graminoids/grasses.csv",row.names=FALSE,sep=";",na="")
 
 
-d$flore<-ifelse(is.na(d$flore),"",d$flore)
+d$flore<-ifelse(is.na(d$flore),"-",d$flore)
+d$index<-ifelse(is.na(d$index),"-",d$index)
 
 
 #d<-d[order(as.integer(is.na(d$photo)),-as.integer(factor(d$family)),d$sp,d$rank),]
@@ -78,11 +79,11 @@ a {
 }
 .a2 {
   text-decoration: none; /* no underline */
-  color: #FFFFFF77;
+  color: #ccc;
 }
 .flore {
   color: #FFFFFF77;
-    font-style: italic;
+  /*font-style: italic;*/
 }
 .column {
   float: left;
@@ -94,6 +95,10 @@ a {
   width: 100%;
   padding: 0px;
   background: forestgreen;
+}
+.species:hover {
+  opacity: 0.70;
+  filter: alpha(opacity=100);
 }
 .row::after {
   content: \"\";
@@ -108,6 +113,7 @@ a {
   padding: 2px;
   background: #EEEEEE;
   background-origin: content-box;
+  cursor: pointer;
 }
 .img2:hover {
   opacity: 0.70;
@@ -220,9 +226,14 @@ width: 100%;
   <div class=\"species\">
   <h2 style = \"color:#FFFFFFEE;font-size:40px;font-family:'Helvetica';\">Index photographique des poacées, cypéracées et juncacées de la Réunion</h2>
   </div>
-  <p style = \"color:black;font-size:22px;\">Cette page est un index photographique des graminées de la Réunion. La liste des espèces présentes est basée sur les espèces décrites dans la Flore des Mascareignes et les espèces listéees dans l'index de la flore de la Réunion du CBNM. Les photos proviennent presque toutes d'observations sur iNaturalist. Les photos présentées sont toutes sous une license CC permettant leur utilisation à des fins non-commerciales. Passez votre curseur sur une photo pour voir la license utilisée et l'auteur de a photo et cliquez sur la photo pour voir la photo originale. Pour toutes questions ou commentaires: ici</p>
+  <p style = \"color:black;font-size:17px;\">Cette page est un index photographique des poacées, cypéracées et juncacées de la Réunion. La liste des espèces présentées est basée sur la liste des espèces reconnues comme étant présentes à la Réunion selon <a href=\"https://mascarine.cbnm.org/index.php/flore/index-de-la-flore\" target=\"_blank\">l'Index taxonomique de la flore vasculaire de La Réunion</a> du <a href=\"http://www.cbnm.org/\" target=\"_blank\">Conservatoire National Botanique Mascarin (CBN - CPIE Mascarin)</a>. Plusieurs espèces n'ont pas été retenues, car leur mention résultent possiblement d'erreurs d'identification, d'étiquetages ou autres. Voir à la toute fin pour la liste des espèces qui n'ont pas été retenues.</p><br>
+  
+<p style = \"color:black;font-size:17px;\">La plupart des photos proviennent d'observations déposées sur <a href=\"https://www.inaturalist.org/\" target=\"_blank\">iNaturalist</a> ou de spécimens d'herbiers déposés au <a href=\"https://science.mnhn.fr/institution/mnhn/item/search\" target=\"_blank\">Muséum National d'Histoire Naturelle</a>. La plupart des photos présentées sont toutes sous une license <a href=\"https://creativecommons.org/about/cclicenses/\" target=\"_blank\">Creative Commons (CC)</a> permettant leur utilisation à des fins non-commerciales, mais vérifiez la license et l'auteur de chaque photo en y passant votre curseur ou en cliquant sur la photo et en consultant l'adresse URL au bas. Pour toutes questions ou commentaires: ici</p><br>
+
+<p style = \"color:black;font-size:17px;\">Pour plusieurs espèces, notamment pour quelques espèces endémiques ou rares, seules des photos de spécimens d'herbier sont disponibles. Si vous possédez des photos pour ces espèces et si vous souhaitez contribuer à ce site, merci de déposer vos photos sous forme d'observations sur <a href=\"https://www.inaturalist.org/\" target=\"_blank\">iNaturalist</a> et de me contacter. Finalement, merci de me contacter si vous trouvez des erreurs sur le site ou pour toutes questions ou commentaires. L'identification pour la plupart des photos n'a pas été validée par des experts et je suis moi-même en apprentissage de ces espèces. Il faut donc rester prudent lors de l'utlisation des images présentées ici à des fins d'identification. Pour me contacter: francoisrousseu at hotmail com</p><br>
+
 <div class=\"species\">
-<p style = \"color:#FFFFFFEE;font-size:30px;\">iNaturalist <span class=\"flore\">Flore des Mascareignes</span><span style=\"float:right;\">Famille</span>
+<p class=\"p2\" style = \"color:#FFFFFFEE;font-size:30px;\">iNaturalist&nbsp;&nbsp<span class=\"flore\">Flore des Mascareignes&nbsp;&nbsp</span><span class=\"flore\">Index du CBNM</span><span style=\"float:right;\">Famille</span>
 </p>
 </div>
 ")
@@ -234,7 +245,7 @@ species_header<-function(x,i){
  "<a href=\"https://mascarine.cbnm.org/index.php/flore/index-de-la-flore/nom?",paste0("code_taxref=",x$taxref[i]),"\" target=\"_blank\">
    <div class=\"species\">
     <p class=\"p2\">
-      ",x$sp[i]," <span class=\"flore\">",x$flore[i],"</span>"," <span style=\"float:right;\">",x$family[i],"</span>
+      ",x$sp[i],"&nbsp;&nbsp<span class=\"flore\">",x$flore[i],"</span>","&nbsp;&nbsp<span class=\"flore\">",x$index[i],"</span>"," <span style=\"float:right;\">",x$family[i],"</span>
     </p>
    </div>  
   </a>
@@ -243,7 +254,7 @@ species_header<-function(x,i){
 
 species_photo<-function(x,i){
   cat(paste0(
-    "<img class=\"img2\" src=\"",x$photo[i],"\" src2=\"","testing","\" title=\"",paste(x$attribution[i]),"\" link=\"",paste(x$obs[i]),"\" alt=\"",paste(x$obs[i]),"\">"
+    "<img class=\"img2\" src=\"",x$photo[i],"\" src2=\"","testing","\" title=\"",paste(x$attribution[i]),"\" alt=\"",paste(x$obs[i]),"\">"
   ))
 }
 
